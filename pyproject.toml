@@ -2,7 +2,58 @@
 requires = ["setuptools>=44", "wheel", "setuptools_scm>=3.4.3", "toml"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools_scm]
+[project]
+name = "pygls"
+dynamic = ["version"]
+authors = [{ name = "Open Law Library", email = "info@openlawlib.org" }]
+description = "A pythonic generic language server (pronounced like 'pie glass')"
+keywords = ["python", "pythonic", "generic", "language", "server", "protocol"]
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+requires-python = ">=3.7,<4"
+dependencies = [
+    "pydantic>=1.9.1,<1.10",
+    "typeguard>=2.10.0,<3",
+]
+
+[project.optional-dependencies]
+ws = ["websockets==10.*"]
+dev = [
+    "bandit==1.7.4",
+    "flake8==4.0.1",
+    "mypy==0.961",
+]
+docs = [
+    "sphinx==5.0.1",
+    "sphinx_rtd_theme==1.0.0",
+]
+test = [
+    "mock==4.0.3",
+    "pytest==7.1.2",
+    "pytest-asyncio==0.18.3",
+]
+
+
+[project.urls]
+homepage = "https://github.com/openlawlibrary/pygls"
+repository = "https://github.com/openlawlibrary/pygls"
+documentation = "https://pygls.readthedocs.io/en/latest/"
+
+[tool.setuptools.packages]
+find = {}
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
